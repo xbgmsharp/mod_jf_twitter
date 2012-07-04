@@ -1,0 +1,65 @@
+var Twitter = new Class({
+    initialize: function (b) {
+        var c = b.getElement('a.tw_previous').addClass('disabled');
+        var d = b.getElement('a.tw_next');
+        var e = this;
+        this.pages = b.getElements('div.tw_page');
+        this.pages.each(function (a) {
+            a.height = a.getCoordinates().height
+        });
+        if (this.pages.length < 2) d.addClass('disabled');
+        this.active = this.pages[0];
+        this.rail = b.getElement('div.tw_rail');
+        this.railfx = this.rail.effect('margin-top', {
+            onStart: function () {
+                if (e.active.getPrevious()) {
+                    c.removeClass('disabled')
+                } else {
+                    c.addClass('disabled')
+                }
+                if (e.active.getNext()) {
+                    d.removeClass('disabled')
+                } else {
+                    d.addClass('disabled')
+                }
+            }
+        }).set(0);
+        this.boxfx = b.getElement('div.tw_tweets').effect('height').set(this.active.getCoordinates().height);
+        if (this.pages.length > 1) {
+            c.addEvent('click', function () {
+                e.previous()
+            });
+            d.addEvent('click', function () {
+                e.next()
+            })
+        }
+    },
+    next: function () {
+        this.railfx.stop();
+        this.boxfx.stop();
+        var a = this.active.getNext();
+        var b = this.rail.getStyle('margin-top').toInt();
+        if (a) {
+            var c = this.active.height;
+            this.active = a;
+            this.railfx.start(b - c);
+            this.boxfx.start(a.height)
+        }
+    },
+    previous: function () {
+        this.railfx.stop();
+        this.boxfx.stop();
+        var a = this.active.getPrevious();
+        var b = this.rail.getStyle('margin-top').toInt();
+        if (a) {
+            this.active = a;
+            this.railfx.start(b + a.height);
+            this.boxfx.start(a.height)
+        }
+    }
+});
+window.addEvent('domready', function () {
+    $$('div.jf_twitter').each(function (a) {
+        new Twitter(a)
+    })
+});
