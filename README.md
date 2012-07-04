@@ -2,7 +2,8 @@ mod_jf_twitter
 ==============
 
 A Joomla2.5 module to show tweet.
-Adapted module from (Jooforge)[http://www.jooforge.com/en/download/free/extensions/23-twitter].
+
+Adapted module from [Jooforge](http://www.jooforge.com/en/download/free/extensions/23-twitter).
 
 By this module you can view the last message that you sent by your Twitter account, being able to gather them in manifold flowing pages by control buttons. Plus you will be able to choose if you want to visualize the avatar and the name of your profile too, so your consumers will be able to go directly on your personal page on twitter.com.
 
