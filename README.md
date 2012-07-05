@@ -11,7 +11,7 @@ Simply and indiscreet, it suits him for all the websites, excellent for those th
 
 Licence
 -------
-The piwigo-videojs plugin for Piwigo is free software:  you can redistribute it
+The mod_jf_twitter is free software:  you can redistribute it
 and/or  modify  it under  the  terms  of the  GNU  General  Public License  as
 published by the Free Software Foundation.
 
